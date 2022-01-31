@@ -1,0 +1,16 @@
+"PIANO CAR TANK".lowercase()
+"hello world".uppercase()
+
+
+print "hello world"
+print true
+print false
+print "test"
+$var = 10
+print $var
+
+#print "hello world"
+/*
+print "hello world"
+print "how are you"
+*/

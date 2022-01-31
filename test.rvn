@@ -1,0 +1,31 @@
+$var = 10
+print $var
+print "hello world".uppercase()
+print "PIANO CAR TANK".lowercase()
+
+print 1*(2+3*4)+5
+
+
+print (1+2)*3+4/(5+6*7)-8
+
+print 5+9
+print 3+7
+print 1*2+3 
+print 1+2*3 
+print 1*2+3*4
+
+print 90 - 40
+print 140 - 30
+
+
+
+print "hello world"
+print true
+print false
+print "test"
+
+
+#print "hello world"
+
+print "hello world"
+print "how are you"

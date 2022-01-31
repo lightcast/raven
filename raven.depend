@@ -1,0 +1,82 @@
+# depslib dependency file v1.0
+1643672311 source:c:\users\jd\documents\code\raven\raven.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	<iterator>
+	<algorithm>
+	<map>
+	"lexer.h"
+	"parser.h"
+
+1643671018 c:\users\jd\documents\code\raven\lexer.h
+	<iostream>
+	<fstream>
+	<vector>
+	<iterator>
+	<algorithm>
+	<map>
+
+1643671018 c:\users\jd\documents\code\raven\parser.h
+	<iostream>
+	<fstream>
+	<vector>
+	<sstream>
+	<iterator>
+	<algorithm>
+	<map>
+	"variables.h"
+	"expressions.h"
+	"printing.h"
+	"strings.h"
+	"dataTypes.h"
+	"parserErrors.h"
+	"string_methods.h"
+
+1643671018 c:\users\jd\documents\code\raven\variables.h
+	<iostream>
+	<fstream>
+	<vector>
+	<iterator>
+	<algorithm>
+	<map>
+
+1643671018 c:\users\jd\documents\code\raven\expressions.h
+	<iostream>
+	<fstream>
+	<vector>
+	<iterator>
+	<algorithm>
+	<map>
+	<string>
+
+1643671018 c:\users\jd\documents\code\raven\printing.h
+	<vector>
+	<map>
+
+1643671018 c:\users\jd\documents\code\raven\strings.h
+	<iostream>
+	<fstream>
+	<vector>
+	<iterator>
+	<algorithm>
+	<map>
+	<cctype>
+	<locale>
+
+1643671018 c:\users\jd\documents\code\raven\datatypes.h
+
+1643671018 c:\users\jd\documents\code\raven\parsererrors.h
+	<iostream>
+	<fstream>
+	<vector>
+	<sstream>
+	<iterator>
+	<algorithm>
+	<map>
+
+1643671018 c:\users\jd\documents\code\raven\string_methods.h
+	<iostream>
+	<fstream>
+	<vector>
+
