@@ -75,7 +75,7 @@ void lexer(vector<string> fileContents, std::vector<std::string> &tokens)
         for (std::vector<char>::size_type i = 0; i < v.size(); i++)
         {
             token = token + v.at(i);
-            //            cout << token << endl;
+            // cout << token << endl;
 
             // comments started
             if (i + 1 < v.size())
@@ -180,19 +180,23 @@ void lexer(vector<string> fileContents, std::vector<std::string> &tokens)
                 token = "";
                 //loopExpressionBool = false;
             }
-            // else if (token == "{" && forLoopStarted == true)
-            // {
-            //     tokens.push_back("FORBODYBEGIN:");
-            //     forLoopBody = true;
-            //     token = "";
-            // }
-            // else if (token == "}" && forLoopStarted == true && forLoopBody == true)
-            // {
-            //     tokens.push_back("FORBODYEND:" + loopBody);
-            //     token = "";
-            //     forLoopStarted = false;
-            //     forLoopBody = false;
-            // }
+            else if (token == "{" && forLoopStarted == true)
+            {
+                tokens.push_back("FORBODYBEGIN:");
+                forLoopBody = true;
+                token = "";
+                continue;
+            }
+            else if (token == "}")
+            {
+                cout << "for loop body end" << endl;
+                tokens.push_back("FORBODYEND:");
+                token = "";
+
+                forLoopStarted = false;
+                forLoopBody = false;
+                continue;
+            }
             // else if (forLoopStarted == true && forLoopBody == true)
             // {
             //     loopBody.append(token);
