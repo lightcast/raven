@@ -199,7 +199,7 @@ int main(int argc, char *argv[])
         vector<string> fileContents = readFile(fn);
 
         lexer(fileContents, tokens);
-        // parser(tokens, sybmols);
+        parser(tokens, sybmols);
         printVector(tokens);
     }
 

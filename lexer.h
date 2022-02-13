@@ -154,20 +154,21 @@ void lexer(vector<string> fileContents, std::vector<std::string> &tokens)
                 // start for loop
                 //cout << "right here";
                 forLoopStarted = true;
+                tokens.push_back("FOR:");
                 state = true;
                 token = "";
             }
             else if (token == "(" && forLoopStarted == true)
             {
-                cout << "right here" << endl;
+                // cout << "right here" << endl;
                 loopExpressionBool = true;
                 token = "";
                 continue;
             }
             else if (token == ")" && forLoopStarted == true && loopExpressionBool == true)
             {
-                cout << "right here again" << endl;
-                tokens.push_back("FOR:" + loopExpression);
+                //cout << "right here again" << endl;
+                tokens.push_back(loopExpression);
                 token = "";
                 loopExpressionBool = false;
                 continue;
@@ -189,7 +190,9 @@ void lexer(vector<string> fileContents, std::vector<std::string> &tokens)
             }
             else if (token == "}")
             {
-                cout << "for loop body end" << endl;
+                // TODO:
+                // this needs to be fixed
+                //cout << "for loop body end" << endl;
                 tokens.push_back("FORBODYEND:");
                 token = "";
 

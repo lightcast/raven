@@ -1,4 +1,4 @@
-for($hello = 0; hello > 10; $hello++){
+for($hello = 0; hello < 10; $hello++){
     print "hello";
 }
 
