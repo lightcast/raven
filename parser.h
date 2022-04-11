@@ -35,6 +35,77 @@ inline const char *const BoolToString(bool b)
     return b ? "true" : "false";
 }
 
+void executeWhileLoop(vector<string> &tokens, int position)
+{
+}
+
+void compareExpression(string expression)
+{
+    string delimiter = "<";
+
+    string greater = expression.substr(0, boolCondition.find(delimiter));
+
+    boolCondition.erase(0, boolCondition.find(delimiter) + delimiter.length());
+    string less = boolCondition.substr(0, boolCondition.find(delimiter));
+
+    cout << "greater than" << variableValue << endl;
+    cout << "less than" << less << endl;
+}
+
+void executeForLoop(vector<string> &tokens, int position)
+{
+    // this is the for loop boolean expression
+    // for now we will hard code the for loop to make sure it works
+    cout << "aaaaahere" << endl;
+
+    string temp1 = tokens.at(position + 1);
+
+    string delimiter = ";";
+
+    string variableDeclaration = temp1.substr(0, temp1.find(delimiter));
+    temp1.erase(0, temp1.find(delimiter) + delimiter.length());
+    string boolCondition = temp1.substr(0, temp1.find(delimiter));
+    temp1.erase(0, temp1.find(delimiter) + delimiter.length());
+    string iterator = temp1.substr(0, temp1.find(delimiter));
+
+    cout << "VD" << variableDeclaration << endl;
+    cout << "BC" << boolCondition << endl;
+    cout << "IT" << iterator << endl;
+
+    delimiter = "=";
+    string variable = variableDeclaration.substr(0, variableDeclaration.find(delimiter));
+    variableDeclaration.erase(0, variableDeclaration.find(delimiter) + delimiter.length());
+
+    string variableValue = variableDeclaration.substr(0, variableDeclaration.find(delimiter));
+
+    /*
+
+            let's look at the condition
+            */
+
+    std::string::size_type sz; // alias of size_t
+
+    delimiter = "<";
+    string greater = boolCondition.substr(0, boolCondition.find(delimiter));
+    boolCondition.erase(0, boolCondition.find(delimiter) + delimiter.length());
+    string less = boolCondition.substr(0, boolCondition.find(delimiter));
+
+    cout << "greater than" << variableValue << endl;
+    cout << "less than" << less << endl;
+
+    for (int i = stoi(variableValue, &sz); i < stoi(less, &sz); i++)
+    {
+        cout << "hello" << endl;
+    }
+
+    /*
+
+std::string s = "scott>=tiger";
+std::string delimiter = ">=";
+std::string token = s.substr(0, s.find(delimiter)); // token is "scott"
+                        */
+}
+
 void printFromParser(string str, map<string, string> &sybmols)
 {
     //      printToScreen("kjkjkjkjjkjkjk");
@@ -127,56 +198,11 @@ void parser(vector<string> &tokens, map<string, string> &sybmols)
         }
         else if (token == "FOR:")
         {
-            // this is the for loop boolean expression
-            // for now we will hard code the for loop to make sure it works
-            cout << "aaaaahere" << endl;
-
-            string temp1 = tokens.at(i + 1);
-
-            string delimiter = ";";
-
-            string variableDeclaration = temp1.substr(0, temp1.find(delimiter));
-            temp1.erase(0, temp1.find(delimiter) + delimiter.length());
-            string boolCondition = temp1.substr(0, temp1.find(delimiter));
-            temp1.erase(0, temp1.find(delimiter) + delimiter.length());
-            string iterator = temp1.substr(0, temp1.find(delimiter));
-
-            cout << "VD" << variableDeclaration << endl;
-            cout << "BC" << boolCondition << endl;
-            cout << "IT" << iterator << endl;
-
-            delimiter = "=";
-            string variable = variableDeclaration.substr(0, variableDeclaration.find(delimiter));
-            variableDeclaration.erase(0, variableDeclaration.find(delimiter) + delimiter.length());
-
-            string variableValue = variableDeclaration.substr(0, variableDeclaration.find(delimiter));
-
-            /*
-
-            let's look at the condition
-            */
-
-            std::string::size_type sz; // alias of size_t
-
-            delimiter = "<";
-            string greater = boolCondition.substr(0, boolCondition.find(delimiter));
-            boolCondition.erase(0, boolCondition.find(delimiter) + delimiter.length());
-            string less = boolCondition.substr(0, boolCondition.find(delimiter));
-
-            cout << "greater than" << variableValue << endl;
-            cout << "less than" << less << endl;
-
-            for (int i = stoi(variableValue, &sz); i < stoi(less, &sz); i++)
-            {
-                cout << "hello" << endl;
-            }
-
-            /*
-
-std::string s = "scott>=tiger";
-std::string delimiter = ">=";
-std::string token = s.substr(0, s.find(delimiter)); // token is "scott"
-                        */
+            executeForLoop(tokens, i);
+        }
+        else if (token == "WHILE:")
+        {
+            executeWhileLoop(tokens, i);
         }
 
         else if (token == "PRINT")
