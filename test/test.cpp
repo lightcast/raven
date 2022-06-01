@@ -1,24 +1,38 @@
 
 #include <iostream>
+#include <vector>
+
+using std::string;
 
 using namespace std;
 
+
+
+std::vector<std::string> vDelimiter = {"<", ">", "==", "=>", "=<", "!="};
+
+string findDelimiter(string expression){
+    
+    string delimiter = "";
+
+    for(int i = 0; i < vDelimiter.size(); i++){
+        delimiter = vDelimiter.at(i);
+        size_t found = expression.find(delimiter);
+
+        if(found != string::npos)
+            //cout << "not found" << found << endl;
+            return delimiter;
+
+    }
+    return delimiter;
+}
+
 void compareExpression(string expression)
 {
-    string delimiter = "<";
+    
+    string delimiter = findDelimiter(expression);
 
-    cout << expression.npos == expression.find(">");
-    if (expression.find('>'))
-    {
-        cout << "true" << endl;
-    }
-    else
-    {
-        cout << "false" << endl;
-    }
-
-    cout << expression.find('<') << endl;
-
+    cout << delimiter << endl;
+   
     string greater = expression.substr(0, expression.find(delimiter));
 
     expression.erase(0, expression.find(delimiter) + delimiter.length());
@@ -26,11 +40,18 @@ void compareExpression(string expression)
 
     cout << "greater than" << greater << endl;
     cout << "less than" << less << endl;
+
+
+    for(int i = 0; greater == less; i++){
+        cout << "hello world";
+    }
+
+
 }
 
 int main(int argc, char *argv[])
 {
-    compareExpression("10 < 20;");
+    compareExpression("10 == 20;");
 
     return 0;
 }

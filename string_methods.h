@@ -71,6 +71,7 @@ bool isString(){
     else printf ("character %c is not alphabetic\n",str[i]);
     i++;
   }
+  return false;
 }
 
 

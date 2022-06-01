@@ -30,33 +30,35 @@ using std::istream_iterator;
 
 #include "string_methods.h"
 
+#include "loops.h"
+
 inline const char *const BoolToString(bool b)
 {
     return b ? "true" : "false";
 }
 
-void executeWhileLoop(vector<string> &tokens, int position)
+void parseWhileLoop(vector<string> &tokens, int position)
 {
 }
 
-void compareExpression(string expression)
-{
-    string delimiter = "<";
+// void compareExpression(string expression)
+// {
+//     string delimiter = "<";
 
-    string greater = expression.substr(0, boolCondition.find(delimiter));
+//     string greater = expression.substr(0, boolCondition.find(delimiter));
 
-    boolCondition.erase(0, boolCondition.find(delimiter) + delimiter.length());
-    string less = boolCondition.substr(0, boolCondition.find(delimiter));
+//     boolCondition.erase(0, boolCondition.find(delimiter) + delimiter.length());
+//     string less = boolCondition.substr(0, boolCondition.find(delimiter));
 
-    cout << "greater than" << variableValue << endl;
-    cout << "less than" << less << endl;
-}
+//     cout << "greater than" << variableValue << endl;
+//     cout << "less than" << less << endl;
+// }
 
-void executeForLoop(vector<string> &tokens, int position)
+int parseForLoop(vector<string> &tokens, int position, map<string, string> &sybmols)
 {
     // this is the for loop boolean expression
     // for now we will hard code the for loop to make sure it works
-    cout << "aaaaahere" << endl;
+    // cout << "aaaaahere111111" << endl;
 
     string temp1 = tokens.at(position + 1);
 
@@ -68,42 +70,32 @@ void executeForLoop(vector<string> &tokens, int position)
     temp1.erase(0, temp1.find(delimiter) + delimiter.length());
     string iterator = temp1.substr(0, temp1.find(delimiter));
 
-    cout << "VD" << variableDeclaration << endl;
+    /*cout << "VD" << variableDeclaration << endl;
     cout << "BC" << boolCondition << endl;
-    cout << "IT" << iterator << endl;
+    cout << "IT" << iterator << endl;*/
 
-    delimiter = "=";
-    string variable = variableDeclaration.substr(0, variableDeclaration.find(delimiter));
-    variableDeclaration.erase(0, variableDeclaration.find(delimiter) + delimiter.length());
 
-    string variableValue = variableDeclaration.substr(0, variableDeclaration.find(delimiter));
 
-    /*
+    initializationExpression(variableDeclaration, sybmols, tokens);
 
-            let's look at the condition
-            */
+    compareExpression(boolCondition);
 
-    std::string::size_type sz; // alias of size_t
+    updateExpression(iterator);
+    
+    position  = position + 1;
+    
+   // cout<< position << "position" << endl;
+    int i = loopExpressionBody(position,tokens);
+    //cout << i << endl;
 
-    delimiter = "<";
-    string greater = boolCondition.substr(0, boolCondition.find(delimiter));
-    boolCondition.erase(0, boolCondition.find(delimiter) + delimiter.length());
-    string less = boolCondition.substr(0, boolCondition.find(delimiter));
 
-    cout << "greater than" << variableValue << endl;
-    cout << "less than" << less << endl;
+/*
+    executeForLoop();
 
-    for (int i = stoi(variableValue, &sz); i < stoi(less, &sz); i++)
-    {
-        cout << "hello" << endl;
-    }
+*/
 
-    /*
+return i;
 
-std::string s = "scott>=tiger";
-std::string delimiter = ">=";
-std::string token = s.substr(0, s.find(delimiter)); // token is "scott"
-                        */
 }
 
 void printFromParser(string str, map<string, string> &sybmols)
@@ -198,11 +190,12 @@ void parser(vector<string> &tokens, map<string, string> &sybmols)
         }
         else if (token == "FOR:")
         {
-            executeForLoop(tokens, i);
+          int num = parseForLoop(tokens, i, sybmols);
+          i = num;
         }
         else if (token == "WHILE:")
         {
-            executeWhileLoop(tokens, i);
+            parseWhileLoop(tokens, i);
         }
 
         else if (token == "PRINT")
@@ -247,6 +240,17 @@ void parser(vector<string> &tokens, map<string, string> &sybmols)
 
                 i = i + 1;
             }
+
+
+
+
+
+
+
+
+
+
+
         }
         else if (token.substr(0, 4) == "VAR:")
         {
