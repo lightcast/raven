@@ -1,8 +1,8 @@
-for($hello = 0; hello < 10; $hello++){
-    print "hello";
-}
 
-/*
+//$var = 10
+//print $var
+
+
 $var = 10
 print $var
 print "hello world".uppercase()
@@ -34,4 +34,12 @@ print "test"
 
 print "hello world"
 print "how are you"
+
+
+/*
+
+for($hello = 0; hello < 10; $hello++){
+    print "helloddd";
+}
+
 */
